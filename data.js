@@ -44,7 +44,7 @@ const PORTFOLIO = {
 
   stats: [
     { value: "4+", label: { es: "años de experiencia", en: "years of experience" } },
-    { value: "3", label: { es: "idiomas", en: "languages" } },
+    { value: "3", label: { es: "idiomas", en: "spoken languages" } },
     { value: "1", label: { es: "publicación científica", en: "scientific publication" } },
     { value: "15+", label: { es: "certificaciones y cursos", en: "certifications & courses" } },
   ],
@@ -112,21 +112,61 @@ const PORTFOLIO = {
     },
   ],
 
+  // Publicaciones científicas
+  publications: [
+    {
+      title: "Application of Machine Learning Algorithms to Detect Fake News in the Peruvian Context",
+      venue: "Springer · Smart Technologies, Systems and Applications (SmartTech-IC 2024), CCIS vol. 2392, pp. 335–346",
+      type: { es: "Capítulo de libro", en: "Book chapter" },
+      year: "2025",
+      authors: "Dongo Esquivel, D.Y., Cutipa Arapa, E.G., Villafuerte Serna, R.",
+      description: {
+        es: "Modelo de machine learning (Naive Bayes y Support Vector Machine) para detectar noticias falsas en el contexto peruano, entrenado con un dataset propio construido con la API de Twitter. Nació como mi tesis (Fictus Detector) y lo presenté como ponente en SmartTech-IC 2024 en Quito, Ecuador.",
+        en: "Machine learning model (Naive Bayes and Support Vector Machine) to detect fake news in the Peruvian context, trained on a custom dataset collected via the Twitter API. It started as my thesis (Fictus Detector) and I presented it as a speaker at SmartTech-IC 2024 in Quito, Ecuador.",
+      },
+      highlights: [
+        { value: "95.40%", label: { es: "precisión con Naive Bayes", en: "accuracy with Naive Bayes" } },
+        { value: "Springer", label: { es: "editorial (CCIS)", en: "publisher (CCIS)" } },
+        { value: "SmartTech-IC", label: { es: "Quito, Ecuador · 2024", en: "Quito, Ecuador · 2024" } },
+      ],
+      tags: ["Machine Learning", "NLP", "Naive Bayes", "SVM", "Python"],
+      doi: "10.1007/978-3-031-98287-3_24",
+    },
+  ],
+
   projects: [
     {
-      title: {
-        es: "Detección de noticias falsas con Machine Learning",
-        en: "Fake News Detection with Machine Learning",
-      },
+      title: { es: "BBVA FastCash – Crédito empresarial y analítica", en: "BBVA FastCash – Business Credit & Analytics" },
       description: {
-        es: "Modelo para detectar noticias falsas en el contexto peruano con Naive Bayes y Support Vector Machine, entrenado con un dataset propio construido con la API de Twitter. Alcanzó 95.40% de precisión con Naive Bayes. Nació como mi tesis (Fictus Detector), se presentó en SmartTech-IC 2024 y fue publicado por Springer (CCIS vol. 2392).",
-        en: "Model to detect fake news in the Peruvian context using Naive Bayes and Support Vector Machines, trained on a custom dataset collected via the Twitter API. Reached 95.40% accuracy with Naive Bayes. Started as my thesis (Fictus Detector), presented at SmartTech-IC 2024 and published by Springer (CCIS vol. 2392).",
+        es: "Lideré al equipo en la migración frontend a Cells (canal Senda) de los flujos de Pago, Cancelación y Desembolso de crédito empresarial, usando componentes Spherica y soporte multicanal. Implementé el etiquetado y la analítica de todos estos flujos.",
+        en: "Led the team migrating the business-credit Payment, Cancellation and Disbursement flows to Cells (Senda channel), using Spherica components and multi-channel support. Implemented tagging and analytics across these flows.",
       },
       image: "",
-      tags: ["Machine Learning", "NLP", "Python", "Scikit-learn", "NLTK"],
-      demo: "https://link.springer.com/chapter/10.1007/978-3-031-98287-3_24",
+      tags: ["Cells", "Spherica", { es: "Analítica", en: "Analytics" }, { es: "Liderazgo", en: "Leadership" }],
+      demo: "",
       code: "",
-      featured: true,
+    },
+    {
+      title: { es: "Telefónica – Módulo de Ajustes y Descuentos", en: "Telefónica – Adjustments & Discounts Module" },
+      description: {
+        es: "Desarrollé funcionalidades en Angular para los módulos de Ajustes y Descuentos de la Plataforma de Consultores, diseñé las plantillas de correo e implementé logging con New Relic.",
+        en: "Built Angular features for the Adjustments and Discounts modules of the Consultants Platform, designed the email templates and implemented New Relic logging.",
+      },
+      image: "",
+      tags: ["Angular", "TypeScript", "New Relic"],
+      demo: "",
+      code: "",
+    },
+    {
+      title: { es: "ERP de gestión de citas – MacSalud", en: "Appointment Management ERP – MacSalud" },
+      description: {
+        es: "Lideré el equipo frontend en Angular que desarrolló el nuevo sistema de gestión de citas de la clínica MacSalud (Cusco), optimizando el flujo de atención a pacientes.",
+        en: "Led the Angular frontend team that built the new appointment management system for the MacSalud clinic (Cusco), streamlining the patient scheduling workflow.",
+      },
+      image: "",
+      tags: ["Angular", "TypeScript", "Tech Lead"],
+      demo: "",
+      code: "",
     },
     {
       title: { es: "Sistema de venta de boletos – Machu Picchu", en: "Ticketing System – Machu Picchu" },
@@ -189,7 +229,7 @@ const PORTFOLIO = {
   ],
 
   skills: [
-    { group: { es: "Lenguajes", en: "Languages" }, items: ["Python", "TypeScript", "JavaScript", "Java", "C#", "Dart", "HTML / CSS"] },
+    { group: { es: "Lenguajes de programación", en: "Programming languages" }, items: ["Python", "TypeScript", "JavaScript", "Java", "C#", "Dart", "HTML / CSS"] },
     { group: { es: "Frontend y móvil", en: "Frontend & mobile" }, items: ["Angular", "Cells", "Ionic", "Flutter"] },
     { group: { es: "IA y ciencia de datos", en: "AI & data science" }, items: ["Machine Learning", "NLP", "Scikit-learn", "NLTK", "Pandas", "NumPy", "Business Intelligence"] },
     { group: { es: "Backend y nube", en: "Backend & cloud" }, items: ["Spring Boot", "Azure", "Google Cloud Platform"] },
@@ -238,14 +278,6 @@ const PORTFOLIO = {
     { name: "Operador de Computadoras", issuer: "UNSAAC", year: "2021", url: "" },
   ],
 
-  testimonials: [
-    {
-      quote: {
-        es: "Diego fue uno de los integrantes más destacados de la especialización en Business Intelligence; realizó un excelente proyecto final. Ha demostrado dominar con mucha precisión herramientas de explotación de datos y entender el valor que se puede generar a las organizaciones, planteando soluciones y alternativas de crecimiento de negocio.",
-        en: "Diego was one of the most outstanding members of the Business Intelligence specialization and delivered an excellent capstone project. He showed precise command of data tools and a clear understanding of the value they bring to organizations, proposing solutions and business growth alternatives.",
-      },
-      author: "Rodrigo Diógenes Jáuregui Márquez",
-      role: { es: "Instructor de Business Intelligence, Data Growth", en: "Business Intelligence Instructor, Data Growth" },
-    },
-  ],
+  // Sección "Lo que dicen de mí" oculta. Agrega testimonios aquí para mostrarla de nuevo.
+  testimonials: [],
 };

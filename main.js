@@ -4,11 +4,12 @@
 
   const UI = {
     es: {
-      nav: { about: "Sobre mí", experience: "Experiencia", projects: "Proyectos", awards: "Premios", skills: "Habilidades", languages: "Idiomas", contact: "Contacto" },
+      nav: { about: "Sobre mí", experience: "Experiencia", publications: "Publicaciones", projects: "Proyectos", awards: "Premios", skills: "Habilidades", languages: "Idiomas", contact: "Contacto" },
       available: "Disponible para nuevas oportunidades",
       contactMe: "Contáctame", seeProjects: "Ver proyectos", downloadCv: "Descargar CV",
       aboutKicker: "Sobre mí", aboutTitle: "Un poco de mí",
       expKicker: "Trayectoria", expTitle: "Experiencia laboral",
+      pubKicker: "Investigación", pubTitle: "Publicaciones", readPub: "Leer en Springer ↗",
       projKicker: "Portafolio", projTitle: "Proyectos destacados",
       demo: "Ver demo ↗", code: "Código ↗",
       awardsKicker: "Reconocimientos", awardsTitle: "Premios y logros",
@@ -21,16 +22,17 @@
       sendEmail: "Enviar correo", rights: "Hecho con cariño.",
     },
     en: {
-      nav: { about: "About", experience: "Experience", projects: "Projects", awards: "Awards", skills: "Skills", languages: "Languages", contact: "Contact" },
+      nav: { about: "About", experience: "Experience", publications: "Publications", projects: "Projects", awards: "Awards", skills: "Skills", languages: "Languages", contact: "Contact" },
       available: "Open to new opportunities",
       contactMe: "Contact me", seeProjects: "See projects", downloadCv: "Download CV",
       aboutKicker: "About", aboutTitle: "A bit about me",
       expKicker: "Career", expTitle: "Work experience",
+      pubKicker: "Research", pubTitle: "Publications", readPub: "Read on Springer ↗",
       projKicker: "Portfolio", projTitle: "Featured projects",
       demo: "Live demo ↗", code: "Source ↗",
       awardsKicker: "Recognition", awardsTitle: "Awards & achievements",
       skillsKicker: "Stack", skillsTitle: "Skills",
-      langKicker: "Communication", langTitle: "Languages",
+      langKicker: "Communication", langTitle: "Spoken languages",
       eduKicker: "Background", eduTitle: "Education & certifications",
       testKicker: "References", testTitle: "What people say",
       contactKicker: "Contact", contactTitle: "Let's work together",
@@ -75,7 +77,7 @@
 
     document.getElementById("brand").textContent = m.name;
 
-    const navMap = { about: D.about, experience: D.experience, projects: D.projects, awards: D.awards, skills: D.skills, languages: D.languages, contact: D.contact };
+    const navMap = { about: D.about, experience: D.experience, publications: D.publications, projects: D.projects, awards: D.awards, skills: D.skills, languages: D.languages, contact: D.contact };
     document.getElementById("nav-links").innerHTML = Object.entries(navMap)
       .filter(([, v]) => v && (!Array.isArray(v) || v.length))
       .map(([k]) => `<a href="#${k}">${u.nav[k]}</a>`).join("");
@@ -120,9 +122,24 @@
         </div>
       </div>`).join("")}</div>` : "");
 
+    set("publications", has(D.publications) ? head(u.pubKicker, u.pubTitle) + D.publications.map((p) => {
+      const url = p.url || (p.doi ? `https://doi.org/${p.doi}` : "");
+      return `
+      <article class="card publication reveal">
+        <div class="pub-type">📄 ${esc(t(p.type))}${p.year ? ` · ${esc(p.year)}` : ""}</div>
+        <h3>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(t(p.title))}</a>` : esc(t(p.title))}</h3>
+        ${p.authors ? `<p class="pub-authors">${esc(p.authors)}</p>` : ""}
+        ${p.venue ? `<p class="pub-venue">${esc(t(p.venue))}</p>` : ""}
+        ${t(p.description) ? `<p class="pub-desc">${esc(t(p.description))}</p>` : ""}
+        ${has(p.highlights) ? `<div class="pub-highlights">${p.highlights.map((h) => `<div><b>${esc(h.value)}</b><span>${esc(t(h.label))}</span></div>`).join("")}</div>` : ""}
+        ${tags(p.tags)}
+        ${url ? `<div class="pub-links"><a class="btn primary" href="${esc(url)}" target="_blank" rel="noopener">${u.readPub}</a>${p.doi ? `<span class="doi">DOI: <a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener">${esc(p.doi)}</a></span>` : ""}</div>` : ""}
+      </article>`;
+    }).join("") : "");
+
     set("projects", has(D.projects) ? head(u.projKicker, u.projTitle) + `<div class="projects">${D.projects.map((p) => `
       <article class="card project reveal ${p.featured ? "featured" : ""}">
-        <div class="thumb">${p.image ? `<img src="${esc(p.image)}" alt="${esc(t(p.title))}" loading="lazy" />` : esc(t(p.title))}</div>
+        ${p.image ? `<div class="thumb"><img src="${esc(p.image)}" alt="${esc(t(p.title))}" loading="lazy" /></div>` : ""}
         <div class="body">
           <h3>${esc(t(p.title))}</h3>
           <p>${esc(t(p.description))}</p>
