@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio</title>
+  <meta name="description" content="Portafolio personal: proyectos, experiencia, premios e idiomas." />
+  <!-- Vista previa al compartir el enlace (WhatsApp, LinkedIn…) -->
+  <meta property="og:title" content="Portafolio" />
+  <meta property="og:description" content="Proyectos, experiencia, premios e idiomas." />
+  <meta property="og:type" content="website" />
+  <!-- <meta property="og:image" content="https://tu-dominio.com/assets/preview.png" /> -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='66' font-size='52' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>P</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" id="brand"></a>
+      <nav class="nav-links" id="nav-links"></nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="lang-toggle" aria-label="Cambiar idioma">EN</button>
+        <button class="icon-btn" id="theme-toggle" aria-label="Cambiar tema"></button>
+        <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container" id="hero"></section>
+    <section class="section container" id="about"></section>
+    <section class="section container" id="experience"></section>
+    <section class="section container" id="projects"></section>
+    <section class="section container" id="awards"></section>
+    <section class="section container" id="skills"></section>
+    <section class="section container" id="languages"></section>
+    <section class="section container" id="education"></section>
+    <section class="section container" id="testimonials"></section>
+    <section class="section container" id="contact"></section>
+  </main>
+
+  <footer class="footer container" id="footer"></footer>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
